@@ -1,1 +1,2 @@
-https://preview.redd.it/w2zhrip9twob1.gif?format=mp4&s=feec28f9ca069bbc04d8e0821b85b6992bfd59ba.mp4
+![image](https://github.com/critopadolf/godot_outline_shader/assets/77860196/4cc8e2af-8b83-4f5d-9432-e6d858c77a57)
+
