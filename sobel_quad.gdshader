@@ -1,9 +1,12 @@
 
 shader_type spatial;
+render_mode blend_mix,
+            cull_disabled,
+	        unshaded;
 #include "noise.gdshaderinc"
-uniform sampler2D DEPTH_TEXTURE : source_color, hint_depth_texture;
-uniform sampler2D NORMAL_TEXTURE : source_color, hint_normal_roughness_texture;
-uniform sampler2D SCREEN_TEXTURE : source_color, hint_screen_texture;
+uniform sampler2D DEPTH_TEXTURE :  hint_depth_texture, repeat_disable, filter_linear;
+uniform sampler2D NORMAL_TEXTURE : hint_normal_roughness_texture, repeat_disable, filter_linear;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, repeat_disable, filter_linear;
 
 varying mat4 CAMERA;
 void vertex() {
