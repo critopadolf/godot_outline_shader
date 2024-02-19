@@ -1,0 +1,18 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://cp1k67qlfj0ld"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_wnnlj"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_htnqu"]
+input_name = "instance_id"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+"
+nodes/vertex/2/node = SubResource("VisualShaderNodeInput_htnqu")
+nodes/vertex/2/position = Vector2(-20, 260)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_wnnlj")
+nodes/fragment/2/position = Vector2(-49.3797, 500.843)

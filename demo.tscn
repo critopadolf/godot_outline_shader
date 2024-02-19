@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://d0qgwen7re5v5"]
+
+[ext_resource type="Shader" path="res://sobel_quad.gdshader" id="1_tvifk"]
+[ext_resource type="PackedScene" uid="uid://cdney0hoqqg2n" path="res://primitives.tscn" id="2_e0thu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_88uwo"]
+render_priority = 0
+shader = ExtResource("1_tvifk")
+
+[sub_resource type="QuadMesh" id="QuadMesh_cnref"]
+material = SubResource("ShaderMaterial_88uwo")
+custom_aabb = AABB(0, 0, 0, 500, 500, 500)
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_eodo2"]
+rayleigh_color = Color(1, 0.862745, 0.87451, 1)
+
+[sub_resource type="Sky" id="Sky_up46b"]
+sky_material = SubResource("PhysicalSkyMaterial_eodo2")
+
+[sub_resource type="Environment" id="Environment_ynhmk"]
+background_mode = 2
+sky = SubResource("Sky_up46b")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ocb2j"]
+dof_blur_far_distance = 8192.0
+
+[sub_resource type="TextMesh" id="TextMesh_oilo5"]
+text = "Hello World!"
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.975415, 0.220374, 0, -0.220374, 0.975415, -0.000463799, 0.322491, 0.52256)
+current = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -31.7323)
+mesh = SubResource("QuadMesh_cnref")
+
+[node name="Primitives" parent="." instance=ExtResource("2_e0thu")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.166769, -0.93368, 0.316905, 0, 0.321406, 0.946941, -0.985996, -0.15792, 0.0536005, 0.493852, 1.18867, 0.796083)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ynhmk")
+camera_attributes = SubResource("CameraAttributesPractical_ocb2j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.151848, 0.329849, -0.424011)
+mesh = SubResource("TextMesh_oilo5")

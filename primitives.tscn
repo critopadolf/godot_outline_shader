@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdney0hoqqg2n"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wvg06"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_m2a7p"]
+input_name = "instance_id"
+
+[sub_resource type="VisualShader" id="VisualShader_xsgnr"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+"
+nodes/vertex/2/node = SubResource("VisualShaderNodeInput_m2a7p")
+nodes/vertex/2/position = Vector2(-57.5, 189.9)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wm5d2"]
+render_priority = 0
+shader = SubResource("VisualShader_xsgnr")
+
+[sub_resource type="SphereMesh" id="SphereMesh_kb5vq"]
+material = SubResource("ShaderMaterial_wm5d2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n1es"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4aqgy"]
+material = SubResource("StandardMaterial3D_7n1es")
+
+[sub_resource type="PrismMesh" id="PrismMesh_iutm7"]
+
+[node name="Primitives" type="Node3D"]
+
+[node name="Plane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.031914, 0)
+mesh = SubResource("PlaneMesh_wvg06")
+
+[node name="Sphere" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.293614, 0.204289, -0.288182)
+mesh = SubResource("SphereMesh_kb5vq")
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.21614, 0.18796, -0.0231375)
+mesh = SubResource("BoxMesh_4aqgy")
+
+[node name="Prism" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.213967, 0.204503, -0.000339627)
+mesh = SubResource("PrismMesh_iutm7")
